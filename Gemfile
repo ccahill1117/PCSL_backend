@@ -27,7 +27,7 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'activeadmin'
-
+gem 'faker', '>= 1.9.3'
 # Plus integrations with:
 gem 'devise'
 gem 'cancancan'
