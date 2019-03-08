@@ -11,8 +11,8 @@ class QuotesController < ApplicationController
   end
 
   def create
-    @quote = Quote.create(quote_params)
-    json_response(@quote)
+    @quote = Quote.create!(quote_params)
+    json_response(@quote, :created)
   end
 
   def update
@@ -25,12 +25,12 @@ class QuotesController < ApplicationController
     @quote.destroy
   end
 
-  private
-  def json_response(object, status = :ok)
-    render json: object, status: status
-  end
+  # private
+  # def json_response(object, status = :ok)
+  #   render json: object, status: status
+  # end
 
   def quote_params
-    params.permit(:author, :content)
+    params.permit(:id, :author, :content)
   end
 end
