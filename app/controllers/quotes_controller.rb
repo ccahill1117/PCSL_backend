@@ -17,6 +17,11 @@ class QuotesController < ApplicationController
 
   def update
     @quote = Quote.find(params[:id])
+      if @quote.update!(quote_params)
+        render status: 200, json: {
+          message: "your quote has been updated!"
+        }
+    end
     @quote.update(quote_params)
   end
 
@@ -34,3 +39,7 @@ class QuotesController < ApplicationController
     params.permit(:id, :author, :content)
   end
 end
+
+
+#  curl —-data ‘{“id”:23, ”content”: “hi”, ”author”: “ok”}’ -X POST localhost:3000/quotes
+# curl --data '{"id": 24, "content": "test2", "author": "person"}' -X POST localhost:3000/quotes
